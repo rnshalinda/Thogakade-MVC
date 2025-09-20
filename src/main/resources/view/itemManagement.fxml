@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="554.0" prefWidth="1039.0" stylesheets="@../button-style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.icet.ecom.controller.itemManagement.ItemManagementFormController">
+   <children>
+      <Label layoutX="30.0" layoutY="5.0" prefHeight="83.0" prefWidth="280.0" text="Manage Store Items" textFill="#16877f">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="84.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/cims.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Label>
+      <Button fx:id="btnExit" layoutX="690.0" layoutY="487.0" mnemonicParsing="false" onAction="#btnExitAction" prefHeight="25.0" prefWidth="50.0" text="Exit" textAlignment="CENTER" textFill="#686d71f5">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <TableView fx:id="itemTable" layoutX="360.0" layoutY="98.0" prefHeight="346.0" prefWidth="635.0">
+        <columns>
+          <TableColumn fx:id="colItemCode" prefWidth="97.6695556640625" text="Item Code " />
+          <TableColumn fx:id="colDescription" prefWidth="214.53909301757812" text="Description " />
+            <TableColumn fx:id="colPackSize" prefWidth="97.66943359375" text="Pack Size " />
+            <TableColumn fx:id="colUnitPrice" prefWidth="131.895751953125" text="Unit Price " />
+            <TableColumn fx:id="colQtyOnHand" prefWidth="94.33056640625" text="Qty On Hand " />
+        </columns>
+      </TableView>
+      <Label layoutX="61.0" layoutY="143.0" text="Item Code  :  " />
+      <Label layoutX="56.0" layoutY="194.0" text="Description  :  " />
+      <Label layoutX="68.0" layoutY="283.0" text="Pack Size  :  " />
+      <Label layoutX="69.0" layoutY="332.0" text="Unit Price :  " />
+      <Label layoutX="75.0" layoutY="381.0" text="Quantity :  " />
+      <TextField fx:id="txtItemId" layoutX="146.0" layoutY="139.0" prefHeight="9.0" prefWidth="100.0" promptText="Item ID" />
+      <TextField fx:id="txtUnitPrice" layoutX="146.0" layoutY="328.0" prefHeight="28.0" prefWidth="93.0" promptText="Price" />
+      <TextField fx:id="txtQty" layoutX="146.0" layoutY="377.0" prefHeight="28.0" prefWidth="74.0" promptText="Qty" />
+      <ComboBox fx:id="comboUnit" layoutX="237.0" layoutY="280.0" prefHeight="28.0" prefWidth="67.0" />
+      <Button fx:id="btnAdd" layoutX="53.0" layoutY="490.0" mnemonicParsing="false" onAction="#btnAddAction" prefHeight="25.0" prefWidth="59.0" text="Add" textAlignment="CENTER" />
+      <Button fx:id="btnUpdate" layoutX="135.0" layoutY="490.0" mnemonicParsing="false" onAction="#btnUpdateAction" prefHeight="25.0" prefWidth="60.0" text="Update" textAlignment="CENTER" />
+      <Button fx:id="btnDelete" layoutX="217.0" layoutY="489.0" mnemonicParsing="false" onAction="#btnDeleteAction" prefHeight="25.0" prefWidth="60.0" text="Delete" textAlignment="CENTER" />
+      <Button fx:id="btnClear" layoutX="299.0" layoutY="491.0" mnemonicParsing="false" onAction="#btnClearAction" prefHeight="25.0" prefWidth="60.0" text="Clear" textAlignment="CENTER" />
+      <Button fx:id="btnBack" layoutX="621.0" layoutY="488.0" mnemonicParsing="false" onAction="#btnBackAction" prefHeight="25.0" prefWidth="50.0" text="Back" textAlignment="CENTER" />
+      <TextArea fx:id="txtDescription" layoutX="145.0" layoutY="189.0" prefHeight="68.0" prefWidth="184.0" promptText="Item details" />
+      <TextField fx:id="txtPackSize" layoutX="146.0" layoutY="280.0" prefHeight="28.0" prefWidth="80.0" promptText="Size" />
+      <Label layoutX="248.0" layoutY="333.0" text="Rs." />
+   </children>
+</AnchorPane>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="440.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.icet.ecom.controller.dashboard.DashboardController">
+   <children>
+      <Label layoutX="30.0" layoutY="5.0" prefHeight="89.0" prefWidth="217.0" text="Thogakade" textFill="#458a8ced">
+         <font>
+            <Font name="Arial Bold" size="17.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="80.0" fitWidth="114.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/cims.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Label>
+      <Button layoutX="90.0" layoutY="170.0" mnemonicParsing="false" onAction="#btnCustomerMngAction" prefHeight="49.0" prefWidth="201.0" text="Customer Management">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/customer.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="System Bold" size="12.5" />
+         </font>
+      </Button>
+      <Button layoutX="90.0" layoutY="245.0" mnemonicParsing="false" onAction="#btnOrderMngAction" prefHeight="48.0" prefWidth="201.0" text="Order Management">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/order.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <padding>
+            <Insets right="16.0" />
+         </padding>
+         <font>
+            <Font name="System Bold" size="12.5" />
+         </font>
+      </Button>
+      <Button layoutX="319.0" layoutY="171.0" mnemonicParsing="false" onAction="#btnItemMngAction" prefHeight="48.0" prefWidth="201.0" text="Item Management">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/item.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <padding>
+            <Insets right="16.0" />
+         </padding>
+         <font>
+            <Font name="System Bold" size="12.5" />
+         </font>
+      </Button>
+      <Button layoutX="319.0" layoutY="245.0" mnemonicParsing="false" onAction="#btnEditOrderAction" prefHeight="48.0" prefWidth="201.0" text="Edit Order Details">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/order-detail.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <padding>
+            <Insets right="16.0" />
+         </padding>
+         <font>
+            <Font name="System Bold" size="12.5" />
+         </font>
+      </Button>
+      <Label contentDisplay="CENTER" layoutX="247.0" layoutY="98.0" text="Dashboard" textFill="#16877f">
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+      </Label>
+      <Button layoutX="504.0" layoutY="372.0" mnemonicParsing="false" onAction="#btnExitAction" text="Exit" textFill="#686d71f5">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

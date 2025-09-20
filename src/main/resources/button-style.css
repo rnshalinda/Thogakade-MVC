@@ -1,0 +1,127 @@
+.button {
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+    -fx-border-width: 1.5px;
+    -fx-text-fill: #3b3b3b;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 4, 0, 0, 2);
+    -fx-padding: 4 10;
+    -fx-cursor: hand;
+}
+
+.button:pressed {
+    -fx-translate-y: 1px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.06), 2, 0, 0, 1);
+}
+
+
+#btnAdd {
+    -fx-background-color: rgba(125, 213, 163, 0.3);
+    -fx-border-color: linear-gradient(to right, #7dd5a3, #5a9169);
+}
+
+#btnAdd:hover {
+    -fx-background-color: #7dd5a3;
+    -fx-text-fill: white;
+    -fx-border-color: #7dd5a3;
+}
+
+
+#btnUpdate {
+    -fx-background-color: rgba(67, 158, 207, 0.3);
+    -fx-border-color: linear-gradient(to right, #439ecf, #3379a6);
+}
+
+#btnUpdate:hover {
+    -fx-background-color: #439ecf;
+    -fx-text-fill: white;
+    -fx-border-color: #439ecf;
+}
+
+
+#btnDelete {
+    -fx-background-color: rgba(198, 111, 111, 0.3);
+    -fx-border-color: linear-gradient(to right, #c66f6f, #a65858);
+}
+
+#btnDelete:hover {
+    -fx-background-color: #c66f6f;
+    -fx-text-fill: white;
+    -fx-border-color: #c66f6f;
+}
+
+
+
+
+#btnClear {
+    -fx-background-color: rgba(220, 220, 220, 0.3); /* Softer gray tint */
+    -fx-border-color: linear-gradient(to right, #b0b0b0, #959595); /* Matching gray gradient border */
+}
+
+#btnClear:hover {
+    -fx-background-color: #b0b0b0; /* Solid gray on hover */
+    -fx-text-fill: white;
+    -fx-border-color: #b0b0b0;
+}
+
+
+
+
+
+#btnBack {
+    -fx-background-color: transparent; /* Transparent background by default */
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+    -fx-border-width: 1.5px;
+    -fx-border-color: #6c757d; /* A subtle grey border */
+    -fx-text-fill: #6c757d; /* Matching grey text */
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 4, 0, 0, 2); /* Subtle shadow */
+    -fx-padding: 4 10;
+    -fx-cursor: hand;
+}
+
+#btnBack:hover {
+    -fx-background-color: rgba(108, 117, 125, 0.1); /* Very light grey fill on hover */
+    -fx-text-fill: #5a6268; /* Slightly darker text on hover */
+    -fx-border-color: #5a6268; /* Darker border on hover */
+}
+
+#btnBack:pressed {
+    -fx-background-color: rgba(108, 117, 125, 0.2); /* More prominent grey fill on press */
+    -fx-translate-y: 1px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.06), 2, 0, 0, 1);
+}
+
+
+
+
+
+#btnExit {
+    /* Main gradient background */
+    -fx-background-color: linear-gradient(to bottom, #4f7aa3, #2f5478);
+    -fx-background-radius: 5px;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px; /* Consistent font size */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 0); /* Subtle shadow */
+    -fx-padding: 4 10; /* Consistent padding */
+    -fx-cursor: hand; /* Cursor change */
+}
+
+#btnExit:hover {
+    /* Lighter gradient on hover for visual feedback */
+    -fx-background-color: linear-gradient(to bottom, #6392b9, #406c94);
+    /* Soft glow on hover, similar to your example but with its own color */
+    -fx-effect: dropshadow(three-pass-box, rgba(79,122,163,0.4), 10, 0.4, 0, 0);
+}
+
+#btnExit:pressed {
+    /* Darker gradient on press for an "in-set" feel */
+    -fx-background-color: linear-gradient(to bottom, #3a5d7e, #2a4c6a);
+    -fx-translate-y: 1px; /* Slight push down effect */
+}
+
+

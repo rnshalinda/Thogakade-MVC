@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="554.0" prefWidth="853.0" stylesheets="@../button-style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.icet.ecom.controller.orderDetailManagement.OrderDetailManagementFormController">
+   <children>
+      <Label layoutX="30.0" layoutY="5.0" prefHeight="83.0" prefWidth="280.0" text=" Edit Order Details" textFill="#16877f">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="84.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/cims.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Label>
+      <Button fx:id="btnExit" layoutX="758.0" layoutY="487.0" mnemonicParsing="false" onAction="#btnExitAction" prefHeight="25.0" prefWidth="50.0" text="Exit" textAlignment="CENTER" textFill="#686d71f5">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <TableView fx:id="orderDetailTable" layoutX="298.0" layoutY="98.0" prefHeight="346.0" prefWidth="512.0">
+        <columns>
+          <TableColumn fx:id="colOrderID" prefWidth="116.86956787109375" text="Order ID " />
+          <TableColumn fx:id="colItemCode" prefWidth="116.86953735351562" text="Item Code " />
+            <TableColumn fx:id="colOrderQTY" prefWidth="86.81732177734375" text="Order QTY " />
+            <TableColumn fx:id="colDiscount" prefWidth="90.15655517578125" text="Discount " />
+            <TableColumn fx:id="colTotal" prefWidth="100.17397038191223" text="Total" />
+        </columns>
+      </TableView>
+      <Label layoutX="76.0" layoutY="153.0" text="Order ID  :  " />
+      <Label layoutX="73.0" layoutY="295.0" text="Discount  : " />
+      <Label layoutX="66.0" layoutY="200.0" text="Item Code  :  " />
+      <TextField fx:id="txtOrderId" layoutX="153.0" layoutY="149.0" prefHeight="9.0" prefWidth="100.0" promptText="Order ID" />
+      <Button fx:id="btnAdd" layoutX="53.0" layoutY="490.0" mnemonicParsing="false" onAction="#btnAddAction" prefHeight="25.0" prefWidth="59.0" text="Add" textAlignment="CENTER" />
+      <Button fx:id="btnUpdate" layoutX="135.0" layoutY="490.0" mnemonicParsing="false" onAction="#btnUpdateAction" prefHeight="25.0" prefWidth="60.0" text="Update" textAlignment="CENTER" />
+      <Button fx:id="btnDelete" layoutX="217.0" layoutY="489.0" mnemonicParsing="false" onAction="#btnDeleteAction" prefHeight="25.0" prefWidth="60.0" text="Delete" textAlignment="CENTER" />
+      <Button fx:id="btnClear" layoutX="299.0" layoutY="491.0" mnemonicParsing="false" onAction="#btnClearAction" prefHeight="25.0" prefWidth="60.0" text="Clear" textAlignment="CENTER" />
+      <Button fx:id="btnBack" layoutX="689.0" layoutY="488.0" mnemonicParsing="false" onAction="#btnBackAction" prefHeight="25.0" prefWidth="50.0" text="Back" textAlignment="CENTER" />
+      <TextField fx:id="txtItemCode" layoutX="152.0" layoutY="196.0" prefHeight="28.0" prefWidth="100.0" promptText="Item Code " />
+      <Label layoutX="65.0" layoutY="248.0" text="Order QTY  :  " />
+      <TextField fx:id="txtOrderQTY" layoutX="152.0" layoutY="244.0" prefHeight="28.0" prefWidth="64.0" promptText="QTY" />
+      <TextField fx:id="txtDiscount" layoutX="152.0" layoutY="290.0" prefHeight="28.0" prefWidth="64.0" promptText="(%)" />
+      <Label layoutX="72.0" layoutY="367.0" text="Total  (Rs.)  : " textFill="#089008fc">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblTotal" layoutX="159.0" layoutY="367.0" text="null" textFill="#223b80ef">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

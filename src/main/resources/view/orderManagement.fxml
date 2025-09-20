@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="554.0" prefWidth="807.0" stylesheets="@../button-style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.icet.ecom.controller.orderManagement.OrderManagementFormController">
+   <children>
+      <Label layoutX="30.0" layoutY="5.0" prefHeight="83.0" prefWidth="280.0" text="Manage Orders" textFill="#16877f">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="84.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/cims.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Label>
+      <Button fx:id="btnExit" layoutX="707.0" layoutY="487.0" mnemonicParsing="false" onAction="#btnExitAction" prefHeight="25.0" prefWidth="50.0" text="Exit" textAlignment="CENTER" textFill="#686d71f5">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <TableView fx:id="ordersTable" layoutX="355.0" layoutY="98.0" prefHeight="346.0" prefWidth="362.0">
+        <columns>
+          <TableColumn fx:id="colOrderID" prefWidth="101.0086669921875" text="Order ID " />
+          <TableColumn fx:id="colOrderDate" prefWidth="152.76522827148438" text="Order Date " />
+            <TableColumn fx:id="colCustID" prefWidth="103.51300048828125" text="Cust ID " />
+        </columns>
+      </TableView>
+      <Label layoutX="79.0" layoutY="178.0" text="Order ID  :  " />
+      <Label layoutX="66.0" layoutY="229.0" text="Order Date  : " />
+      <Label layoutX="55.0" layoutY="276.0" text="Customer ID   :  " />
+      <TextField fx:id="txtOrderId" layoutX="153.0" layoutY="174.0" prefHeight="9.0" prefWidth="100.0" promptText="Order ID" />
+      <Button fx:id="btnAdd" layoutX="53.0" layoutY="490.0" mnemonicParsing="false" onAction="#btnAddAction" prefHeight="25.0" prefWidth="59.0" text="Add" textAlignment="CENTER" />
+      <Button fx:id="btnUpdate" layoutX="135.0" layoutY="490.0" mnemonicParsing="false" onAction="#btnUpdateAction" prefHeight="25.0" prefWidth="60.0" text="Update" textAlignment="CENTER" />
+      <Button fx:id="btnDelete" layoutX="217.0" layoutY="489.0" mnemonicParsing="false" onAction="#btnDeleteAction" prefHeight="25.0" prefWidth="60.0" text="Delete" textAlignment="CENTER" />
+      <Button fx:id="btnClear" layoutX="299.0" layoutY="491.0" mnemonicParsing="false" onAction="#btnClearAction" prefHeight="25.0" prefWidth="60.0" text="Clear" textAlignment="CENTER" />
+      <Button fx:id="btnBack" layoutX="638.0" layoutY="488.0" mnemonicParsing="false" onAction="#btnBackAction" prefHeight="25.0" prefWidth="50.0" text="Back" textAlignment="CENTER" />
+      <TextField fx:id="txtCustId" layoutX="152.0" layoutY="272.0" prefHeight="28.0" prefWidth="100.0" promptText="Cust ID " />
+      <DatePicker fx:id="dateOrderDate" layoutX="153.0" layoutY="224.0" prefHeight="28.0" prefWidth="140.0" promptText="Date" />
+   </children>
+</AnchorPane>
