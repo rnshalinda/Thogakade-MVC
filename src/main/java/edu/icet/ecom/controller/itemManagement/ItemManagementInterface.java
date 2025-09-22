@@ -10,4 +10,8 @@ public interface ItemManagementInterface {
     ObservableList<ItemDto> getTblData();
 
     void addItem(ItemDto itemDto);
+
+    void deleteItem(String itemId);
+
+    void updateItem(ItemDto itemDto);
 }

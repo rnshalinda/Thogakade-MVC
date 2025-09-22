@@ -79,16 +79,28 @@ public class OrderManagementFormController implements Initializable {
     @FXML
     void btnUpdateAction(ActionEvent event) {
 
+        if(nullFieldCheck()){
+            service.updateOrdersDto(createDto());
+            loadTbl();
+        }
+        else {
+            AlertUtil.showAlert(Alert.AlertType.WARNING, "Fields cannot be empty");
+        }
     }
 
     @FXML
     void btnDeleteAction(ActionEvent event) {
 
+        if(!txtOrderId.getText().isBlank()){
+            service.deleteOrder(txtOrderId.getText());
+        }
+        else AlertUtil.showAlert(Alert.AlertType.WARNING, "Order-ID field cannot be empty");
+
     }
 
     @FXML
     void btnClearAction(ActionEvent event) {
-
+        clearFields();
     }
 
     @FXML
@@ -111,6 +123,7 @@ public class OrderManagementFormController implements Initializable {
     }
 
 
+    // populate table
     private void loadTbl(){
 
         data = service.getTblData();
@@ -129,9 +142,11 @@ public class OrderManagementFormController implements Initializable {
     private void tblRowSelector() {
 
         ordersTable.getSelectionModel().selectedItemProperty().addListener((observableValue, prevSelect, newSelect) -> {
-            txtOrderId.setText(newSelect.getOrderID());
-            txtCustId.setText(newSelect.getCustID());
-            dateOrderDate.setValue(newSelect.getOrderDate());
+            if(newSelect != null) {
+                txtOrderId.setText(newSelect.getOrderID());
+                txtCustId.setText(newSelect.getCustID());
+                dateOrderDate.setValue(newSelect.getOrderDate());
+            }
         } );
     }
 
@@ -155,6 +170,14 @@ public class OrderManagementFormController implements Initializable {
         });
     }
 
+
+    // clear all input fields
+    private void clearFields(){
+        txtOrderId.clear();
+        dateOrderDate.setValue(LocalDate.now());
+        txtCustId.clear();
+    }
+
     // check for null input
     private boolean nullFieldCheck(){
         return ( txtOrderId.getText().isBlank() || dateOrderDate.getValue().toString().isBlank() || txtCustId.getText().isBlank() ) ? false : true;
@@ -168,4 +191,6 @@ public class OrderManagementFormController implements Initializable {
                 txtCustId.getText()
         );
     }
+
+
 }

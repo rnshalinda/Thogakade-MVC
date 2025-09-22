@@ -1,7 +1,8 @@
 package edu.icet.ecom.controller.orderDetailManagement;
 
 import edu.icet.ecom.dbConnection.DbConnection;
-import edu.icet.ecom.exception.DbException;
+import edu.icet.ecom.hibernateTransaction.TransactionImpl;
+import edu.icet.ecom.hibernateTransaction.TransactionInterface;
 import edu.icet.ecom.model.OrderDetailDto;
 import edu.icet.ecom.util.AlertUtil;
 import javafx.collections.FXCollections;
@@ -14,6 +15,9 @@ import java.sql.SQLException;
 
 public class OrderDetailManagementService implements OrderDetailManagementInterface{
 
+    TransactionInterface transaction = new TransactionImpl();
+
+    // get order-detail table data from db
     @Override
     public ObservableList<OrderDetailDto> getTblData() {
 
@@ -48,24 +52,40 @@ public class OrderDetailManagementService implements OrderDetailManagementInterf
     @Override
     public void addOrderDetailDto(OrderDetailDto orderDetailDto) {
 
-        String sql = "INSERT INTO orderdetail (OrderID, ItemCode, OrderQTY, Discount) VALUES (?, ?, ?, ?);";
+        transaction.executeAdd( orderDetailDto );
 
-        try {
-            PreparedStatement stm = DbConnection.getInstance().getConnection().prepareStatement(sql);
+//        String sql = "INSERT INTO orderdetail (OrderID, ItemCode, OrderQTY, Discount) VALUES (?, ?, ?, ?);";
+//
+//        try {
+//            PreparedStatement stm = DbConnection.getInstance().getConnection().prepareStatement(sql);
+//
+//            stm.setObject(1, orderDetailDto.getOrderID());
+//            stm.setObject(2, orderDetailDto.getItemCode());
+//            stm.setObject(3, orderDetailDto.getOrderQTY());
+//            stm.setObject(4, orderDetailDto.getDiscount());
+//
+//            stm.executeUpdate();
+//
+//            AlertUtil.showAlert(Alert.AlertType.CONFIRMATION, "Order-detail added Successfully");
+//
+//        } catch (SQLException e) {
+////            throw new RuntimeException(e);
+//            AlertUtil.showAlert(Alert.AlertType.ERROR, "DB error! Could not add Order-detail");
+//
+//        }
+    }
 
-            stm.setObject(1, orderDetailDto.getOrderID());
-            stm.setObject(2, orderDetailDto.getItemCode());
-            stm.setObject(3, orderDetailDto.getOrderQTY());
-            stm.setObject(4, orderDetailDto.getDiscount());
+    // delete order-detail
+    @Override
+    public void deleteOrderDetail(String text, String text1) {
 
-            stm.executeUpdate();
+//        transaction.executeDelete();
+    }
 
-            AlertUtil.showAlert(Alert.AlertType.CONFIRMATION, "Order-detail added Successfully");
+    // update order-detail
+    @Override
+    public void updateOrderDetailDto(OrderDetailDto orderDetailDto) {
 
-        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-            AlertUtil.showAlert(Alert.AlertType.ERROR, "DB error! Could not add Order-detail");
-
-        }
+        transaction.executeUpdate( orderDetailDto );
     }
 }

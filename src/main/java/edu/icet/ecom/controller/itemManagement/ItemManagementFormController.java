@@ -14,6 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 
@@ -94,16 +95,28 @@ public class ItemManagementFormController implements Initializable {
     @FXML
     void btnUpdateAction(ActionEvent event) {
 
+        if(nullFieldCheck()){
+            service.updateItem(createDto());
+            loadTbl();
+        }
+        else {
+            AlertUtil.showAlert(Alert.AlertType.WARNING, "Fields cannot be empty");
+        }
+
     }
 
     @FXML
     void btnDeleteAction(ActionEvent event) {
 
+        if(!txtItemId.getText().isBlank()){
+            service.deleteItem(txtItemId.getText());
+        }
+        else AlertUtil.showAlert(Alert.AlertType.WARNING, "Item-ID field cannot be empty");
     }
 
     @FXML
     void btnClearAction(ActionEvent event) {
-
+        clearFields();
     }
 
     @FXML
@@ -163,6 +176,17 @@ public class ItemManagementFormController implements Initializable {
     private void setUnitTypes(){
         comboUnit.setItems(FXCollections.observableArrayList("g","kg","ml","L"));
     }
+
+    // clear all input fields
+    private void clearFields(){
+        txtItemId.clear();
+        txtDescription.clear();
+        txtPackSize.clear();
+        txtUnitPrice.clear();
+        comboUnit.setValue(null);
+        txtQty.clear();
+    }
+
 
     // check for null input
     private boolean nullFieldCheck(){

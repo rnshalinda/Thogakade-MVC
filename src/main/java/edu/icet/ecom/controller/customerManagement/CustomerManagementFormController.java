@@ -122,12 +122,23 @@ public class CustomerManagementFormController implements Initializable {
 
     @FXML
     void btnUpdateAction(ActionEvent event) {
-        //
+
+        if(nullFieldCheck()){
+            service.updateCustomer(createDto());
+            loadTbl();
+        }
+        else {
+            AlertUtil.showAlert(Alert.AlertType.WARNING, "Fields cannot be empty");
+        }
     }
 
     @FXML
     void btnDeleteAction(ActionEvent event) {
-        //
+        if(!txtCustId.getText().isBlank()){
+            service.deleteCustomer(txtCustId.getText());
+        }
+        else AlertUtil.showAlert(Alert.AlertType.WARNING, "Customer ID field cannot be empty");
+
     }
 
     @FXML
@@ -136,7 +147,7 @@ public class CustomerManagementFormController implements Initializable {
     }
 
     @FXML
-    void    btnBackAction(ActionEvent event) {
+    void btnBackAction(ActionEvent event) {
         WindowSwitchUtil.setWindow(event, "/view/dashboard.fxml");
     }
 
@@ -229,6 +240,7 @@ public class CustomerManagementFormController implements Initializable {
         dateDOB.setValue(LocalDate.now());
         txtSalary.clear();
         txtAddress.clear();
+        txtCity.clear();
         comboProvince.setValue(null);
         txtPostal.clear();
 

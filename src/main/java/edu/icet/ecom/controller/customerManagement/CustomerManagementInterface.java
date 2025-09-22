@@ -7,6 +7,10 @@ import javafx.collections.ObservableList;
 public interface CustomerManagementInterface {
 
     ObservableList<CustomerDto> getTblData();
+
     void addCustomer(CustomerDto custDto);
 
+    void deleteCustomer(String text);
+
+    void updateCustomer(CustomerDto dto);
 }

@@ -8,4 +8,8 @@ public interface OrderManagementInterface {
     ObservableList<OrdersDto> getTblData();
 
     void addOrdersDto(OrdersDto ordersDto);
+
+    void deleteOrder(String orderId);
+
+    void updateOrdersDto(OrdersDto ordersDto);
 }

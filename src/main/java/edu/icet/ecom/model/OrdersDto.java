@@ -1,5 +1,9 @@
 package edu.icet.ecom.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -9,9 +13,17 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+
+@Entity
+@Table(name = "orders")
 public class OrdersDto {
 
+    @Id
+    @Column(length = 6, nullable = false)
     String OrderID;
+
     LocalDate OrderDate;
+
+    @Column(length = 6, nullable = false)
     String CustID;
 }

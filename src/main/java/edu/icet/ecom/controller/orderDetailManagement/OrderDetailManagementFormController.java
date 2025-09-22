@@ -33,9 +33,6 @@ public class OrderDetailManagementFormController implements Initializable {
     private TableColumn<?, ?> colOrderQTY;
 
     @FXML
-    private TableColumn<?, ?> colTotal;
-
-    @FXML
     private Button btnAdd;
 
     @FXML
@@ -87,17 +84,28 @@ public class OrderDetailManagementFormController implements Initializable {
 
     @FXML
     void btnUpdateAction(ActionEvent event) {
-
+        if(nullFieldCheck()){
+            service.updateOrderDetailDto(createDto());
+            loadTbl();
+        }
+        else {
+            AlertUtil.showAlert(Alert.AlertType.WARNING, "Fields cannot be empty");
+        }
     }
 
     @FXML
     void btnDeleteAction(ActionEvent event) {
 
+        if(!txtOrderId.getText().isBlank() && !txtItemCode.getText().isBlank()){
+            service.deleteOrderDetail(txtOrderId.getText(), txtItemCode.getText());
+        }
+        else AlertUtil.showAlert(Alert.AlertType.WARNING, "Order-ID & Item-Code fields cannot be empty");
+
     }
 
     @FXML
     void btnClearAction(ActionEvent event) {
-
+        clearFields();
     }
 
     @FXML
@@ -119,6 +127,7 @@ public class OrderDetailManagementFormController implements Initializable {
     }
 
 
+    // populate table
     private void loadTbl(){
 
         data = service.getTblData();
@@ -129,7 +138,6 @@ public class OrderDetailManagementFormController implements Initializable {
             colItemCode.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
             colOrderQTY.setCellValueFactory(new PropertyValueFactory<>("orderQTY"));
             colDiscount.setCellValueFactory(new PropertyValueFactory<>("discount"));
-            //colTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
 
             orderDetailTable.setItems(data);
         }
@@ -139,10 +147,12 @@ public class OrderDetailManagementFormController implements Initializable {
     private void tblRowSelector() {
 
         orderDetailTable.getSelectionModel().selectedItemProperty().addListener((observableValue, prevSelect, newSelect) -> {
-            txtOrderId.setText(newSelect.getOrderID());
-            txtItemCode.setText(newSelect.getItemCode());
-            txtOrderQTY.setText(String.valueOf(newSelect.getOrderQTY()));
-            txtDiscount.setText(String.valueOf(newSelect.getDiscount()));
+            if(newSelect != null) {
+                txtOrderId.setText(newSelect.getOrderID());
+                txtItemCode.setText(newSelect.getItemCode());
+                txtOrderQTY.setText(String.valueOf(newSelect.getOrderQTY()));
+                txtDiscount.setText(String.valueOf(newSelect.getDiscount()));
+            }
         } );
     }
 
@@ -160,5 +170,13 @@ public class OrderDetailManagementFormController implements Initializable {
                 Integer.parseInt(txtOrderQTY.getText()),
                 Double.parseDouble(txtDiscount.getText())
         );
+    }
+
+    // clear all input fields
+    private void clearFields(){
+        txtOrderId.clear();
+        txtItemCode.clear();
+        txtOrderQTY.clear();
+        txtDiscount.clear();
     }
 }
