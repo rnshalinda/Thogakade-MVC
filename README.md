@@ -1,4 +1,4 @@
-# Thogakade-MVC
+# Thogakade-MVC (JavaFX · Hibernate ORM · MySQL)
 
 **Thogakade-MVC** is a desktop application built with **JavaFX**, **Hibernate ORM**, and **MySQL**, following the **MVC (Model–View–Controller)** design pattern.  
 The project demonstrates **end-to-end CRUD operations** with a modular structure, reusable transaction layer, and entity relationships.  
