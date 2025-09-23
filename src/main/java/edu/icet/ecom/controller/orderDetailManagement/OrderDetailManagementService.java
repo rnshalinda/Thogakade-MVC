@@ -3,6 +3,7 @@ package edu.icet.ecom.controller.orderDetailManagement;
 import edu.icet.ecom.dbConnection.DbConnection;
 import edu.icet.ecom.hibernateTransaction.TransactionImpl;
 import edu.icet.ecom.hibernateTransaction.TransactionInterface;
+import edu.icet.ecom.model.OrderDetailCompositeKey;
 import edu.icet.ecom.model.OrderDetailDto;
 import edu.icet.ecom.util.AlertUtil;
 import javafx.collections.FXCollections;
@@ -35,9 +36,10 @@ public class OrderDetailManagementService implements OrderDetailManagementInterf
 
     // delete order-detail
     @Override
-    public void deleteOrderDetail(String text, String text1) {
+    public void deleteOrderDetail(String orderId, String itemId) {
 
-//        transaction.executeDelete();
+        OrderDetailCompositeKey compositeKey = new OrderDetailCompositeKey( orderId, itemId );
+        transaction.executeDelete( OrderDetailDto.class, compositeKey);
     }
 
     // update order-detail

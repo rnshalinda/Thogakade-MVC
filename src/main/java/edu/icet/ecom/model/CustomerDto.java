@@ -21,28 +21,28 @@ public class CustomerDto {
 
     @Id
     @Column(length = 6, nullable = false)
-    String custID;
+    private String custID;
 
     @Column(length = 5)
-    String custTitle ;
+    private String custTitle ;
 
     @Column(length = 30, nullable = false)
-    String custName ;
+    private String custName ;
 
-    LocalDate dob;
+    private LocalDate dob;
 
     @Column(precision = 10, nullable = false)
-    double salary;
+    private double salary;
 
     @Column(length = 30)
-    String custAddress;
+    private String custAddress;
 
     @Column(length = 20)
-    String city;
+    private String city;
 
     @Column(length = 30)
-    String province;
+    private String province;
 
     @Column(length = 9)
-    String postalCode;
+    private String postalCode;
 }

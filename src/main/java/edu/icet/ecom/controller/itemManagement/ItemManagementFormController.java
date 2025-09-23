@@ -110,6 +110,7 @@ public class ItemManagementFormController implements Initializable {
 
         if(!txtItemId.getText().isBlank()){
             service.deleteItem(txtItemId.getText());
+            loadTbl();
         }
         else AlertUtil.showAlert(Alert.AlertType.WARNING, "Item-ID field cannot be empty");
     }

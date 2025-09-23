@@ -18,17 +18,17 @@ public class ItemDto {
 
     @Id
     @Column(length = 6, nullable = false)
-    String itemCode;
+    private String itemCode;
 
     @Column(length = 50, nullable = false)
-    String description;
+    private String description;
 
     @Column(length = 20, nullable = true)
-    String packSize;
+    private String packSize;
 
     @Column(precision = 10, nullable = false)
-    double unitPrice;
+    private double unitPrice;
 
     @Column(nullable = false)
-    int qtyOnHand;
+    private int qtyOnHand;
 }

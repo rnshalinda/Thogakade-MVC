@@ -20,10 +20,10 @@ public class OrdersDto {
 
     @Id
     @Column(length = 6, nullable = false)
-    String OrderID;
+    private String OrderID;
 
-    LocalDate OrderDate;
+    private LocalDate OrderDate;
 
     @Column(length = 6, nullable = false)
-    String CustID;
+    private String CustID;
 }

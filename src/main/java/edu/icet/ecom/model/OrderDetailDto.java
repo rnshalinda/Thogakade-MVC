@@ -1,9 +1,6 @@
 package edu.icet.ecom.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
@@ -14,20 +11,22 @@ import lombok.*;
 
 @Entity
 @Table(name = "orderdetail")
+@IdClass(OrderDetailCompositeKey.class)     // tells Hibernate this entity uses a composite key
+
 public class OrderDetailDto {
 
     @Id
     @Column(length = 6, nullable = false)
-    String orderID;
+    private String orderID;
 
     @Id
     @Column(length = 6, nullable = false)
-    String itemCode;
+    private String itemCode;
 
     @Column(nullable = false)
-    int orderQTY;
+    private int orderQTY;
 
     @Column(precision = 3)
-    double discount;
-    //double total;
+    private double discount;
+
 }

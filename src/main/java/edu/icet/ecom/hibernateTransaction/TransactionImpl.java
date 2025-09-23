@@ -24,21 +24,21 @@ public class TransactionImpl implements TransactionInterface {
     }
 
 
-
+    // fetch table data
     @Override
     public <T> ObservableList<T> getTblData( Class<T> type ) {
 
         ObservableList<T> list = FXCollections.observableArrayList();
 
         initializeSession();
-        list.addAll( session.createQuery( "FROM "+type.getSimpleName(), type ).getResultList() );      // here eg: "FROM "+type.getSimpleName() => FROM ItemDto
+        list.addAll( session.createQuery( "FROM "+type.getSimpleName(), type ).getResultList() );      // here eg: "FROM "+type.getSimpleName() => "FROM ItemDto"
         commitAndCloseSession();
 
         return list;
     }
 
 
-
+    // add table record
     @Override
     public <T> void executeAdd( T dto) {
 
@@ -47,14 +47,8 @@ public class TransactionImpl implements TransactionInterface {
         commitAndCloseSession();
     }
 
-    @Override
-    public <T> void executeDelete(Class<T> type, String id) {
 
-        initializeSession();
-        session.remove(session.find( type, id ));
-        commitAndCloseSession();
-    }
-
+    // update table record
     @Override
     public <T> void executeUpdate( T dto) {
 
@@ -64,11 +58,23 @@ public class TransactionImpl implements TransactionInterface {
     }
 
 
+    // delete table record (single primary key)
     @Override
-    public <T> void executeDelete(Class<T> type, String id1, String id2) {
+    public <T> void executeDelete(Class<T> type, String id) {
 
         initializeSession();
-//        session.remove( session.find( type, id1, id2));
+        session.remove(session.find( type, id ));
+        commitAndCloseSession();
+    }
+
+
+    // delete table record (composite primary key)
+    @Override
+    public <T> void executeDelete(Class<T> type, Object compositeKey) {
+
+        initializeSession();
+        session.remove( session.find( type, compositeKey));
+        commitAndCloseSession();
     }
 
 }

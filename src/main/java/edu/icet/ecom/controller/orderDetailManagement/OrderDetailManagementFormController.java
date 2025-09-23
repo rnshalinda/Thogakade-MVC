@@ -98,6 +98,7 @@ public class OrderDetailManagementFormController implements Initializable {
 
         if(!txtOrderId.getText().isBlank() && !txtItemCode.getText().isBlank()){
             service.deleteOrderDetail(txtOrderId.getText(), txtItemCode.getText());
+            loadTbl();
         }
         else AlertUtil.showAlert(Alert.AlertType.WARNING, "Order-ID & Item-Code fields cannot be empty");
 

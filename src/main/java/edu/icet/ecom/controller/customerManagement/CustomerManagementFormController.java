@@ -132,10 +132,13 @@ public class CustomerManagementFormController implements Initializable {
         }
     }
 
+
     @FXML
     void btnDeleteAction(ActionEvent event) {
+
         if(!txtCustId.getText().isBlank()){
             service.deleteCustomer(txtCustId.getText());
+            loadTbl();
         }
         else AlertUtil.showAlert(Alert.AlertType.WARNING, "Customer ID field cannot be empty");
 
