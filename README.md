@@ -139,4 +139,4 @@ This project is Maven-based. Key dependencies include:
        <property name="hibernate.connection.password">1234</property>
    ```
 
-6. Run the apllication from Main.class
+6. Run the application from Main.class
