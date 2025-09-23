@@ -16,44 +16,81 @@ public class ItemManagementService implements  ItemManagementInterface{
 
     TransactionInterface transaction = new TransactionImpl();
 
+
     // get item table data from db
     @Override
     public ObservableList<ItemDto> getTblData() {
 
-        ObservableList<ItemDto> list = FXCollections.observableArrayList();
-        String sql = "SELECT * FROM item;";
-
-        try(ResultSet rst = DbConnection.getInstance().getConnection().prepareStatement(sql).executeQuery()){
-
-            while (rst.next()){
-
-                list.add(
-                    new ItemDto(
-                         rst.getString("ItemCode"),
-                         rst.getString("Description"),
-                         rst.getString("PackSize"),
-                         rst.getDouble("UnitPrice"),
-                         rst.getInt("QtyOnHand")
-                    )
-                );
-            }
-
-        }
-        catch (SQLException e){
-//            throw new DbException("Failed to fetch item data from db", e);
-            AlertUtil.showAlert(Alert.AlertType.ERROR, "Failed to fetch item data from db\n"+e.getMessage() );
-
-        }
+        ObservableList<ItemDto> list = transaction.getTblData( ItemDto.class );
 
         return list;
     }
-
 
     // Add item to db
     @Override
     public void addItem(ItemDto itemDto) {
 
-        transaction.executeAdd( itemDto );
+        transaction.executeAdd(itemDto);
+    }
+
+
+
+    // delete item
+    @Override
+    public void deleteItem(String itemId) {
+
+        transaction.executeDelete( ItemDto.class, itemId);
+    }
+
+    // update item
+    @Override
+    public void updateItem(ItemDto itemDto) {
+
+        transaction.executeUpdate( itemDto);
+    }
+}
+
+
+
+
+
+// get item table data from db
+//@Override
+//public ObservableList<ItemDto> getTblData() {
+//
+//    ObservableList<ItemDto> list = FXCollections.observableArrayList();
+//    String sql = "SELECT * FROM item;";
+//
+//    try(ResultSet rst = DbConnection.getInstance().getConnection().prepareStatement(sql).executeQuery()){
+//
+//        while (rst.next()){
+//
+//            list.add(
+//                    new ItemDto(
+//                            rst.getString("ItemCode"),
+//                            rst.getString("Description"),
+//                            rst.getString("PackSize"),
+//                            rst.getDouble("UnitPrice"),
+//                            rst.getInt("QtyOnHand")
+//                    )
+//            );
+//        }
+//
+//    }
+//    catch (SQLException e){
+////            throw new DbException("Failed to fetch item data from db", e);
+//        AlertUtil.showAlert(Alert.AlertType.ERROR, "Failed to fetch item data from db\n"+e.getMessage() );
+//
+//    }
+//
+//    return list;
+//}
+
+
+
+// Add item to db
+//    @Override
+//    public void addItem(ItemDto itemDto) {
 
 //        String sql = "INSERT INTO item (ItemCode, Description, PackSize, UnitPrice, QtyOnHand) VALUES (?, ?, ?, ?, ?);";
 //
@@ -76,19 +113,4 @@ public class ItemManagementService implements  ItemManagementInterface{
 //            AlertUtil.showAlert(Alert.AlertType.ERROR, "DB error! Could not add Item");
 //
 //        }
-    }
-
-    // delete item
-    @Override
-    public void deleteItem(String itemId) {
-
-        transaction.executeDelete( ItemDto.class, itemId);
-    }
-
-    // update item
-    @Override
-    public void updateItem(ItemDto itemDto) {
-
-        transaction.executeUpdate( itemDto);
-    }
-}
+//    }

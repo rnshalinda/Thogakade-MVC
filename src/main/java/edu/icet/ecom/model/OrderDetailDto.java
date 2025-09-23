@@ -20,6 +20,7 @@ public class OrderDetailDto {
     @Column(length = 6, nullable = false)
     String orderID;
 
+    @Id
     @Column(length = 6, nullable = false)
     String itemCode;
 

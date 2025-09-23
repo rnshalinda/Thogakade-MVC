@@ -24,53 +24,16 @@ public class OrderManagementService implements OrderManagementInterface{
     @Override
     public ObservableList<OrdersDto> getTblData() {
 
-        ObservableList<OrdersDto> list = FXCollections.observableArrayList();
+        ObservableList<OrdersDto> list = transaction.getTblData( OrdersDto.class);
 
-        String sql = "SELECT * FROM orders";
-
-        try(ResultSet rst = DbConnection.getInstance().getConnection().prepareStatement(sql).executeQuery()){
-
-            while (rst.next()){
-                list.add(
-                        new OrdersDto(
-                                rst.getString("OrderID"),
-                                LocalDate.parse( rst.getString("OrderDate") ),
-                                rst.getString("CustID")
-                        )
-                );
-            }
-
-        }catch (SQLException e){
-//            throw new DbException("Failed to fetch orders from db",e);
-            AlertUtil.showAlert(Alert.AlertType.ERROR, "Failed to fetch order data from db\n"+e.getMessage() );
-
-        }
         return list;
     }
 
+    // add order
     @Override
     public void addOrdersDto(OrdersDto ordersDto) {
 
         transaction.executeAdd( ordersDto );
-
-//        String sql = "INSERT INTO orders (OrderID, OrderDate, CustID) VALUES (?, ?, ?);";
-//
-//        try {
-//            PreparedStatement stm = DbConnection.getInstance().getConnection().prepareStatement(sql);
-//
-//            stm.setObject(1, ordersDto.getOrderID());
-//            stm.setObject(2, ordersDto.getOrderDate());
-//            stm.setObject(3, ordersDto.getCustID());
-//
-//            stm.executeUpdate();
-//
-//            AlertUtil.showAlert(Alert.AlertType.CONFIRMATION, "Order added Successfully");
-//
-//        } catch (SQLException e) {
-////            throw new RuntimeException(e);
-//            AlertUtil.showAlert(Alert.AlertType.ERROR, "DB error! Could not add Order");
-//
-//        }
     }
 
     // delete order
@@ -89,3 +52,61 @@ public class OrderManagementService implements OrderManagementInterface{
 
 
 }
+
+
+
+
+// get order table data from db
+//@Override
+//public ObservableList<OrdersDto> getTblData() {
+//
+//    ObservableList<OrdersDto> list = FXCollections.observableArrayList();
+//
+//    String sql = "SELECT * FROM orders";
+//
+//    try(ResultSet rst = DbConnection.getInstance().getConnection().prepareStatement(sql).executeQuery()){
+//
+//        while (rst.next()){
+//            list.add(
+//                    new OrdersDto(
+//                            rst.getString("OrderID"),
+//                            LocalDate.parse( rst.getString("OrderDate") ),
+//                            rst.getString("CustID")
+//                    )
+//            );
+//        }
+//
+//    }catch (SQLException e){
+////            throw new DbException("Failed to fetch orders from db",e);
+//        AlertUtil.showAlert(Alert.AlertType.ERROR, "Failed to fetch order data from db\n"+e.getMessage() );
+//
+//    }
+//    return list;
+//}
+
+
+
+
+
+//@Override
+//public void addOrdersDto(OrdersDto ordersDto) {
+//
+////        String sql = "INSERT INTO orders (OrderID, OrderDate, CustID) VALUES (?, ?, ?);";
+////
+////        try {
+////            PreparedStatement stm = DbConnection.getInstance().getConnection().prepareStatement(sql);
+////
+////            stm.setObject(1, ordersDto.getOrderID());
+////            stm.setObject(2, ordersDto.getOrderDate());
+////            stm.setObject(3, ordersDto.getCustID());
+////
+////            stm.executeUpdate();
+////
+////            AlertUtil.showAlert(Alert.AlertType.CONFIRMATION, "Order added Successfully");
+////
+////        } catch (SQLException e) {
+//////            throw new RuntimeException(e);
+////            AlertUtil.showAlert(Alert.AlertType.ERROR, "DB error! Could not add Order");
+////
+////        }
+//}

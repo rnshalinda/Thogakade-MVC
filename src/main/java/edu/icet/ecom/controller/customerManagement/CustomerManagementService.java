@@ -22,44 +22,78 @@ public class CustomerManagementService implements CustomerManagementInterface {
     @Override
     public ObservableList<CustomerDto> getTblData() {
 
-        ObservableList<CustomerDto> list = FXCollections.observableArrayList();
-
-        String sql = "SELECT * FROM customer;";
-
-        try (ResultSet rst = DbConnection.getInstance().getConnection().prepareStatement(sql).executeQuery()) {
-
-            while (rst.next()) {
-                list.add(
-                        new CustomerDto(
-                                rst.getString("CustID"),
-                                rst.getString("CustTitle"),
-                                rst.getString("CustName"),
-                                LocalDate.parse(rst.getString("Dob")),
-                                rst.getDouble("salary"),
-                                rst.getString("CustAddress"),
-                                rst.getString("City"),
-                                rst.getString("Province"),
-                                rst.getString("PostalCode")
-                        )
-                );
-            }
-
-        } catch (SQLException e) {
-//            throw new DbException("Failed to fetch customer data from db", e);
-            AlertUtil.showAlert(Alert.AlertType.ERROR, "Failed to fetch customer data from db\n"+e.getMessage() );
-        }
-
+        ObservableList<CustomerDto> list = transaction.getTblData( CustomerDto.class);
         return list;
     }
-
 
     // Add new customer to db
     @Override
     public void addCustomer(CustomerDto custDto) {
 
-        transaction.executeAdd( custDto );
+        transaction.executeAdd(custDto);
+    }
 
 
+    // delete customer
+    @Override
+    public void deleteCustomer( String id ) {
+
+        transaction.executeDelete( CustomerDto.class, id );
+    }
+
+    //  update customer
+    @Override
+    public void updateCustomer( CustomerDto custDto ) {
+
+        transaction.executeUpdate( custDto );
+    }
+
+}
+
+
+
+
+
+// get table data from db
+//   @Override
+//    public ObservableList<CustomerDto> getTblData() {
+//
+//        ObservableList<CustomerDto> list = FXCollections.observableArrayList();
+//
+//        String sql = "SELECT * FROM customer;";
+//
+//        try (ResultSet rst = DbConnection.getInstance().getConnection().prepareStatement(sql).executeQuery()) {
+//
+//            while (rst.next()) {
+//                list.add(
+//                        new CustomerDto(
+//                                rst.getString("CustID"),
+//                                rst.getString("CustTitle"),
+//                                rst.getString("CustName"),
+//                                LocalDate.parse(rst.getString("Dob")),
+//                                rst.getDouble("salary"),
+//                                rst.getString("CustAddress"),
+//                                rst.getString("City"),
+//                                rst.getString("Province"),
+//                                rst.getString("PostalCode")
+//                        )
+//                );
+//            }
+//
+//        } catch (SQLException e) {
+////            throw new DbException("Failed to fetch customer data from db", e);
+//            AlertUtil.showAlert(Alert.AlertType.ERROR, "Failed to fetch customer data from db\n"+e.getMessage() );
+//        }
+//
+//        return list;
+//    }
+
+
+
+// Add new customer to db
+//    @Override
+//    public void addCustomer(CustomerDto custDto) {
+//
 //        String sql = "INSERT INTO customer (CustID, CustTitle, CustName, DOB, salary, CustAddress, City, Province, PostalCode) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 //
 //        try {
@@ -84,22 +118,4 @@ public class CustomerManagementService implements CustomerManagementInterface {
 //            AlertUtil.showAlert(Alert.AlertType.ERROR, "DB error! Could not add Customer");
 //
 //        }
-
-    }
-
-
-    // delete customer
-    @Override
-    public void deleteCustomer( String id ) {
-
-        transaction.executeDelete( CustomerDto.class, id );
-    }
-
-    //  update customer
-    @Override
-    public void updateCustomer( CustomerDto custDto ) {
-
-        transaction.executeUpdate( custDto );
-    }
-
-}
+//    }

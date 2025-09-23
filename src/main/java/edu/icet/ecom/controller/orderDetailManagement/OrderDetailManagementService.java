@@ -17,34 +17,11 @@ public class OrderDetailManagementService implements OrderDetailManagementInterf
 
     TransactionInterface transaction = new TransactionImpl();
 
-    // get order-detail table data from db
+    // Get order-detail table data from db
     @Override
     public ObservableList<OrderDetailDto> getTblData() {
 
-        ObservableList<OrderDetailDto> list = FXCollections.observableArrayList();
-
-        String sql = "SELECT * FROM orderdetail";
-
-        try(ResultSet rst = DbConnection.getInstance().getConnection().prepareStatement(sql).executeQuery()){
-
-            while (rst.next()){
-                list.add(
-                        new OrderDetailDto(
-                                rst.getString("OrderID"),
-                                rst.getString("ItemCode"),
-                                rst.getInt("OrderQTY"),
-                                rst.getDouble("Discount")
-                                //rst.getDouble("Total")
-                        )
-                );
-            }
-
-        }catch (SQLException e){
-//            throw new DbException("Failed to fetch order-detail data from db",e);
-            AlertUtil.showAlert(Alert.AlertType.ERROR, "Failed to fetch order-detail data from db\n"+e.getMessage() );
-
-        }
-
+        ObservableList<OrderDetailDto> list = transaction.getTblData( OrderDetailDto.class);
         return list;
     }
 
@@ -52,8 +29,69 @@ public class OrderDetailManagementService implements OrderDetailManagementInterf
     @Override
     public void addOrderDetailDto(OrderDetailDto orderDetailDto) {
 
-        transaction.executeAdd( orderDetailDto );
+        transaction.executeAdd(orderDetailDto);
+    }
 
+
+    // delete order-detail
+    @Override
+    public void deleteOrderDetail(String text, String text1) {
+
+//        transaction.executeDelete();
+    }
+
+    // update order-detail
+    @Override
+    public void updateOrderDetailDto(OrderDetailDto orderDetailDto) {
+
+        transaction.executeUpdate( orderDetailDto );
+    }
+}
+
+
+
+
+
+
+// get order-detail table data from db
+//    @Override
+//    public ObservableList<OrderDetailDto> getTblData() {
+//
+//        ObservableList<OrderDetailDto> list = FXCollections.observableArrayList();
+//
+//        String sql = "SELECT * FROM orderdetail";
+//
+//        try(ResultSet rst = DbConnection.getInstance().getConnection().prepareStatement(sql).executeQuery()){
+//
+//            while (rst.next()){
+//                list.add(
+//                        new OrderDetailDto(
+//                                rst.getString("OrderID"),
+//                                rst.getString("ItemCode"),
+//                                rst.getInt("OrderQTY"),
+//                                rst.getDouble("Discount")
+//                                //rst.getDouble("Total")
+//                        )
+//                );
+//            }
+//
+//        }catch (SQLException e){
+////            throw new DbException("Failed to fetch order-detail data from db",e);
+//            AlertUtil.showAlert(Alert.AlertType.ERROR, "Failed to fetch order-detail data from db\n"+e.getMessage() );
+//
+//        }
+//
+//        return list;
+//    }
+
+
+
+
+
+// add order detail to db
+//    @Override
+//    public void addOrderDetailDto(OrderDetailDto orderDetailDto) {
+//
 //        String sql = "INSERT INTO orderdetail (OrderID, ItemCode, OrderQTY, Discount) VALUES (?, ?, ?, ?);";
 //
 //        try {
@@ -73,19 +111,4 @@ public class OrderDetailManagementService implements OrderDetailManagementInterf
 //            AlertUtil.showAlert(Alert.AlertType.ERROR, "DB error! Could not add Order-detail");
 //
 //        }
-    }
-
-    // delete order-detail
-    @Override
-    public void deleteOrderDetail(String text, String text1) {
-
-//        transaction.executeDelete();
-    }
-
-    // update order-detail
-    @Override
-    public void updateOrderDetailDto(OrderDetailDto orderDetailDto) {
-
-        transaction.executeUpdate( orderDetailDto );
-    }
-}
+//    }

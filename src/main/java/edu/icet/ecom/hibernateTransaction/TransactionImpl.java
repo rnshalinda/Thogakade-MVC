@@ -1,5 +1,7 @@
 package edu.icet.ecom.hibernateTransaction;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -20,6 +22,21 @@ public class TransactionImpl implements TransactionInterface {
         session.close();
         HibernateUtil.closeFactory();
     }
+
+
+
+    @Override
+    public <T> ObservableList<T> getTblData( Class<T> type ) {
+
+        ObservableList<T> list = FXCollections.observableArrayList();
+
+        initializeSession();
+        list.addAll( session.createQuery( "FROM "+type.getSimpleName(), type ).getResultList() );      // here eg: "FROM "+type.getSimpleName() => FROM ItemDto
+        commitAndCloseSession();
+
+        return list;
+    }
+
 
 
     @Override
@@ -44,6 +61,14 @@ public class TransactionImpl implements TransactionInterface {
         initializeSession();
         session.merge( dto );
         commitAndCloseSession();
+    }
+
+
+    @Override
+    public <T> void executeDelete(Class<T> type, String id1, String id2) {
+
+        initializeSession();
+//        session.remove( session.find( type, id1, id2));
     }
 
 }

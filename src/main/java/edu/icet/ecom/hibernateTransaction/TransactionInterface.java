@@ -1,9 +1,15 @@
 package edu.icet.ecom.hibernateTransaction;
 
 
+import javafx.collections.ObservableList;
+
 public interface TransactionInterface {
 
-    public <T> void executeAdd( T dto );
-    public <T> void executeDelete( Class<T> type, String id );
-    public <T> void executeUpdate( T dto );
+     <T> void executeAdd( T dto );
+     <T> void executeDelete( Class<T> type, String id );
+     <T> void executeUpdate( T dto );
+     <T> void executeDelete( Class<T> type, String id1, String id2);
+
+     // get all table data
+     <T> ObservableList<T> getTblData( Class<T> type );
 }
