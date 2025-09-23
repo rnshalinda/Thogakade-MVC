@@ -1,5 +1,6 @@
 package edu.icet.ecom.controller.dashboard;
 
+import edu.icet.ecom.util.ExitUtil;
 import edu.icet.ecom.util.WindowSwitchUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -32,7 +33,7 @@ public class DashboardController {
 
     @FXML
     void btnExitAction(ActionEvent event) {
-        System.exit(0);
+        ExitUtil.exit();
     }
 
 

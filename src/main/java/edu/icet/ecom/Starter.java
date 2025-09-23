@@ -1,5 +1,6 @@
 package edu.icet.ecom;
 
+import edu.icet.ecom.hibernateTransaction.HibernateUtil;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,5 +15,8 @@ public class Starter extends Application {
     public void start(Stage stage) throws Exception {
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/dashboard.fxml"))));
         stage.show();
+
+        // Start hibernate SessionFactory
+        HibernateUtil.getSessionFactory();
     }
 }

@@ -4,6 +4,7 @@ import edu.icet.ecom.model.CustomerDto;
 import edu.icet.ecom.model.ItemDto;
 import edu.icet.ecom.util.AlertUtil;
 import edu.icet.ecom.util.CommonStringFuncUtil;
+import edu.icet.ecom.util.ExitUtil;
 import edu.icet.ecom.util.WindowSwitchUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -127,7 +128,7 @@ public class ItemManagementFormController implements Initializable {
 
     @FXML
     void btnExitAction(ActionEvent event) {
-        System.exit(0);
+        ExitUtil.exit();
     }
 
 

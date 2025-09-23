@@ -16,11 +16,23 @@ public class TransactionImpl implements TransactionInterface {
         transaction = session.beginTransaction();
     }
 
-    private void commitAndCloseSession() {
+    private void commitSession() {
 
         transaction.commit();
         session.close();
-        HibernateUtil.closeFactory();
+
+//        HibernateUtil.closeFactory();
+//        should not close the SessionFactory per method consumes resources — only closed at app shutdown
+//
+//        SessionFactory → heavy object, meant to be created once per app
+//          It keeps the database connections, caches, and metadata about entities.
+//
+//        Hibernate itself recommends treating it as a singleton.
+//
+//        Session → lightweight, short-lived.
+//          You open a session for a transaction or request, use it, then close it.
+//          can create thousands of sessions from one SessionFactory.
+
     }
 
 
@@ -32,7 +44,7 @@ public class TransactionImpl implements TransactionInterface {
 
         initializeSession();
         list.addAll( session.createQuery( "FROM "+type.getSimpleName(), type ).getResultList() );      // here eg: "FROM "+type.getSimpleName() => "FROM ItemDto"
-        commitAndCloseSession();
+        commitSession();
 
         return list;
     }
@@ -44,7 +56,7 @@ public class TransactionImpl implements TransactionInterface {
 
         initializeSession();
         session.persist( dto );
-        commitAndCloseSession();
+        commitSession();
     }
 
 
@@ -54,7 +66,7 @@ public class TransactionImpl implements TransactionInterface {
 
         initializeSession();
         session.merge( dto );
-        commitAndCloseSession();
+        commitSession();
     }
 
 
@@ -64,7 +76,7 @@ public class TransactionImpl implements TransactionInterface {
 
         initializeSession();
         session.remove(session.find( type, id ));
-        commitAndCloseSession();
+        commitSession();
     }
 
 
@@ -74,7 +86,7 @@ public class TransactionImpl implements TransactionInterface {
 
         initializeSession();
         session.remove( session.find( type, compositeKey));
-        commitAndCloseSession();
+        commitSession();
     }
 
 }

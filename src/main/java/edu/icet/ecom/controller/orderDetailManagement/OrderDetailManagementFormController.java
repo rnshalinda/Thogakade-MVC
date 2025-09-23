@@ -3,6 +3,7 @@ package edu.icet.ecom.controller.orderDetailManagement;
 import edu.icet.ecom.model.ItemDto;
 import edu.icet.ecom.model.OrderDetailDto;
 import edu.icet.ecom.util.AlertUtil;
+import edu.icet.ecom.util.ExitUtil;
 import edu.icet.ecom.util.WindowSwitchUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -116,7 +117,7 @@ public class OrderDetailManagementFormController implements Initializable {
 
     @FXML
     void btnExitAction(ActionEvent event) {
-        System.exit(0);
+        ExitUtil.exit();
     }
 
 
