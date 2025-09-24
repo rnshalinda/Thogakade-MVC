@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="554.0" prefWidth="988.0" stylesheets="@../button-style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.icet.ecom.controller.itemManagement.ItemManagementFormController">
+<AnchorPane prefHeight="554.0" prefWidth="965.0" stylesheets="@../button-style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.icet.ecom.controller.itemManagement.ItemManagementFormController">
    <children>
       <Label layoutX="30.0" layoutY="5.0" prefHeight="83.0" prefWidth="280.0" text="Manage Store Items" textFill="#16877f">
          <font>
@@ -31,13 +31,13 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <TableView fx:id="itemTable" layoutX="360.0" layoutY="98.0" prefHeight="346.0" prefWidth="578.0">
+      <TableView fx:id="itemTable" layoutX="360.0" layoutY="98.0" prefHeight="346.0" prefWidth="549.0" stylesheets="@../tbl-text-alignment-style.css">
         <columns>
-          <TableColumn fx:id="colItemCode" prefWidth="90.156494140625" text="Item Code " />
-          <TableColumn fx:id="colDescription" prefWidth="195.339111328125" text="Description " />
-            <TableColumn fx:id="colPackSize" prefWidth="91.8260498046875" text="Pack Size " />
-            <TableColumn fx:id="colUnitPrice" prefWidth="100.1739501953125" text="Unit Price " />
-            <TableColumn fx:id="colQtyOnHand" prefWidth="90.9913330078125" text="Qty On Hand " />
+          <TableColumn id="colTxt-align-Center" fx:id="colItemCode" prefWidth="75.96527099609375" text="Item Code " />
+          <TableColumn id="colTxt-align-Center" fx:id="colDescription" prefWidth="209.5303955078125" text="Description " />
+            <TableColumn id="colTxt-align-Center" fx:id="colPackSize" prefWidth="67.617431640625" text="Pack Size " />
+            <TableColumn id="colTxt-align-Right" fx:id="colUnitPrice" prefWidth="80.1390380859375" text="Unit Price " />
+            <TableColumn id="colTxt-align-Center" fx:id="colQtyOnHand" prefWidth="103.5130615234375" text="Qty On Hand " />
         </columns>
       </TableView>
       <Label layoutX="61.0" layoutY="143.0" text="Item Code  :  " />

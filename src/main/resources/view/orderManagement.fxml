@@ -30,11 +30,11 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <TableView fx:id="ordersTable" layoutX="355.0" layoutY="98.0" prefHeight="346.0" prefWidth="362.0">
+      <TableView fx:id="ordersTable" layoutX="355.0" layoutY="98.0" prefHeight="346.0" prefWidth="362.0" stylesheets="@../tbl-text-alignment-style.css">
         <columns>
-          <TableColumn fx:id="colOrderID" prefWidth="101.0086669921875" text="Order ID " />
-          <TableColumn fx:id="colOrderDate" prefWidth="152.76522827148438" text="Order Date " />
-            <TableColumn fx:id="colCustID" prefWidth="103.51300048828125" text="Cust ID " />
+          <TableColumn id="colTxt-align-Center" fx:id="colOrderID" prefWidth="98.50433349609375" text="Order ID " />
+          <TableColumn id="colTxt-align-Center" fx:id="colOrderDate" prefWidth="156.93911743164062" text="Order Date " />
+            <TableColumn id="colTxt-align-Center" fx:id="colCustID" prefWidth="103.51300048828125" text="Cust ID " />
         </columns>
       </TableView>
       <Label layoutX="79.0" layoutY="178.0" text="Order ID  :  " />

@@ -1,0 +1,23 @@
+#colTxt-align-Center {
+    -fx-alignment: center;
+}
+
+#colTxt-align-Right {
+    -fx-alignment: center-right;
+}
+
+
+/*
+    how this works (individual column)
+
+    scene builder select table -> properties -> stylesheets => added this css sheet
+    select needed table-column -> properties -> id => add tag colTxt-align-Center
+
+
+    apply to all column at once, use below
+
+      .table-column {
+         -fx-alignment: center;
+      }
+*/
+

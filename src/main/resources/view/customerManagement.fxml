@@ -33,17 +33,17 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <TableView fx:id="customerTable" layoutX="311.0" layoutY="98.0" prefHeight="346.0" prefWidth="737.0">
+      <TableView fx:id="customerTable" layoutX="311.0" layoutY="98.0" prefHeight="346.0" prefWidth="737.0" stylesheets="@../tbl-text-alignment-style.css">
         <columns>
-          <TableColumn fx:id="colCustID" prefWidth="58.43475341796875" text="Cust ID " />
-          <TableColumn fx:id="colCustTitle" prefWidth="37.565185546875" text="Title " />
-            <TableColumn fx:id="colCustName" prefWidth="89.32171630859375" text="Name " />
-            <TableColumn fx:id="colDOB" prefWidth="78.46951293945312" text="DOB " />
-            <TableColumn fx:id="colSalary" prefWidth="64.834716796875" text="Salary " />
+          <TableColumn id="colTxt-align-Center" fx:id="colCustID" prefWidth="58.43475341796875" text="Cust ID " />
+          <TableColumn id="colTxt-align-Center" fx:id="colCustTitle" prefWidth="37.565185546875" text="Title " />
+            <TableColumn id="colTxt-align-Center" fx:id="colCustName" prefWidth="89.32171630859375" text="Name " />
+            <TableColumn id="colTxt-align-Center" fx:id="colDOB" prefWidth="78.46951293945312" text="DOB " />
+            <TableColumn id="colTxt-align-Center" fx:id="colSalary" prefWidth="64.834716796875" text="Salary " />
             <TableColumn fx:id="colCustAddress" prefWidth="166.95654296875" text="Cust-Address " />
-            <TableColumn fx:id="colCity" prefWidth="83.478271484375" text="City " />
-            <TableColumn fx:id="colProvince" prefWidth="88.48699951171875" text="Province " />
-            <TableColumn fx:id="colPostalCode" prefWidth="57.04351806640625" text="Postal" />
+            <TableColumn id="colTxt-align-Center" fx:id="colCity" prefWidth="83.478271484375" text="City " />
+            <TableColumn id="colTxt-align-Center" fx:id="colProvince" prefWidth="88.48699951171875" text="Province " />
+            <TableColumn id="colTxt-align-Center" fx:id="colPostalCode" prefWidth="57.04351806640625" text="Postal" />
         </columns>
       </TableView>
       <Label layoutX="74.0" layoutY="122.0" text="CustID :  " />

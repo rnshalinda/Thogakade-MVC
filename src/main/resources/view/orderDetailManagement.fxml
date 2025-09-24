@@ -29,12 +29,12 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <TableView fx:id="orderDetailTable" layoutX="322.0" layoutY="99.0" prefHeight="346.0" prefWidth="421.0">
+      <TableView fx:id="orderDetailTable" layoutX="322.0" layoutY="99.0" prefHeight="346.0" prefWidth="421.0" stylesheets="@../tbl-text-alignment-style.css">
         <columns>
-          <TableColumn fx:id="colOrderID" prefWidth="116.86956787109375" text="Order ID " />
-          <TableColumn fx:id="colItemCode" prefWidth="116.86953735351562" text="Item Code " />
-            <TableColumn fx:id="colOrderQTY" prefWidth="86.81732177734375" text="Order QTY " />
-            <TableColumn fx:id="colDiscount" prefWidth="90.15655517578125" text="Discount " />
+          <TableColumn id="colTxt-align-Center" fx:id="colOrderID" prefWidth="111.02606201171875" text="Order ID " />
+          <TableColumn id="colTxt-align-Center" fx:id="colItemCode" prefWidth="107.68704223632812" text="Item Code " />
+            <TableColumn id="colTxt-align-Center" fx:id="colOrderQTY" prefWidth="99.33917236328125" text="Order QTY " />
+            <TableColumn id="colTxt-align-Center" fx:id="colDiscount" prefWidth="90.9913330078125" text="Discount " />
         </columns>
       </TableView>
       <Label layoutX="87.0" layoutY="153.0" text="Order ID  :  " />
