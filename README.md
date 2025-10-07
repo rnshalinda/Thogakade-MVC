@@ -135,8 +135,8 @@ This project is Maven-based. Key dependencies include:
 4. Open the Thogakade_MVC folder with IntelliJ
 5. Check your MySQL DB credentials in hibernate.cfg.xml (Change if necessary)
    ```xml
-       <property name="hibernate.connection.username">root</property>
-       <property name="hibernate.connection.password">1234</property>
+       <property name="hibernate.connection.username"> Your DB username </property>
+       <property name="hibernate.connection.password"> Your DB Password </property>
    ```
 
 6. Run the application from Main.class
